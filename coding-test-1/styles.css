@@ -1,0 +1,32 @@
+/** @format */
+main {
+  padding-top: 50px;
+}
+
+.image-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+  width: 576px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image {
+  height: 365px;
+  width: 576px;
+}
+
+.title-wrapper {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.title {
+  font-family: "Roboto";
+  color: white;
+  font-size: 24px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
