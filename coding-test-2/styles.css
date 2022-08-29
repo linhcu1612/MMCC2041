@@ -1,24 +1,28 @@
+/** @format */
+
 figure.imgHolder {
-	position: relative;
-	width: 576px;
-	height: 365px;
-	margin-bottom: 10px;
+  position: relative;
+  width: 576px;
+  height: 365px;
+  margin-bottom: 10px;
 }
 figure.imgHolder img {
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	left: 0;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
 }
 figure.imgHolder figcaption {
-	position: absolute;
-	z-index: 2;
-	bottom: 0;
-	left: 0;
-	background-color: rgba(0,0,0,0.7);
-	color: #ffffff;
-	font-size: 24px;
-	width: 100%;
-	padding: 10px;
-	box-sizing: border-box;
+  display: none;
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  font-size: 24px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: transform 0.4s;
 }
