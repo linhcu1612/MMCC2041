@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="styles.css" rel="stylesheet" />
+    <title>Coding Test 3</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('video').on('timeupdate', function () {
+                var playTime = Math.round($(this).get(0).currentTime);
+                if (playTime == 5) {
+                    $('h1').hide();
+                    $('#txt1').show();
+                }
+                if (playTime == 12) {
+                    $('#txt1').hide();
+                    $('#txt2').show();
+                    $('img').show();
+                }
+                if (playTime == 20) {
+                    $('#txt2').hide();
+                    $('img').hide();
+                    $('#txt3').show();
+                }
+                if (playTime == 30) {
+                    $('#txt3').hide();
+                    $('#txt4').show();
+                }
+            });
+
+            $('video').on('ended', function () {
+                $('div').fadeOut(200);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <video width="720" controls>
+            <source src="images/hermit-crab.mp4" type="video/mp4">
+            Your browser does not support the this video file.
+        </video>
+
+        <h1>Hermit Crabs</h1>
+
+        <p class="text" id="txt1"> Hermit crabs are decapod crustaceans of the superfamily Paguroidea. <br><br>
+            Most of the approximately 1,110 species possess an asymmetric abdomen concealed in a scavenged mollusc
+            shell.
+        </p>
+
+        <p class="text" id="txt2"> As hermit crabs grow, they require larger shells. Since suitable intact
+            gastropod shells are sometimes a limited resource, vigorous competition often occurs among hermit crabs for
+            shells.
+        </p>
+
+        <img src="images/crab-fight.png" alt="Crab Fight">
+
+        <p class="text" id="txt3"> Hermit crabs with too-small shells cannot grow as fast as those with
+            well-fitting shells, and are more likely to be eaten if they cannot retract completely into the
+            shell.Therefore, as the hermit crab grows in size, it must find a larger shell and abandon the previous one.
+        </p>
+
+        <!-- 
+        The reason for setting the rel attribute in anchor tag below to noreferrer noopener 
+        is to prevent possible malicious attacks from the pages you link to. More info from:
+        https://owasp.org/www-community/attacks/Reverse_Tabnabbing
+        -->
+        <p class="text" id="txt4"> You can read more about hermit crabs on <a
+                href="https://en.wikipedia.org/wiki/Hermit_crab" target="_blank"
+                rel="noopener noreferrer">Wikipedia</a>.
+        </p>
+    </div>
+
+</body>
+
+</html>
