@@ -8,37 +8,46 @@
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <script>
         $(document).ready(function () {
+            const arr = [$('h1'), $('#text_1'), $('#text_2'), $('#text_3'), $('img'), $('#text_4')];
+
+            const hideAll = () => { arr.map((x) => {
+                if (x.css('display') != 'none') {
+                    x.hide();
+                }
+            })}
+
+            hideAll();
+            $('h1').show();
+
             $('video').on('timeupdate', function () {
-                var playTime = Math.round($(this).get(0).currentTime);
-                if (playTime == 5) {
-                    $('h1').hide();
-                    $('#txt1').show();
-                }
-                if (playTime == 12) {
-                    $('#txt1').hide();
-                    $('#txt2').show();
+                let curTime = Math.round($(this).get(0).currentTime);
+                hideAll();
+                if (curTime < 5) {
+                    $('h1').show();
+                } else if (curTime >= 5 && curTime < 12) {
+                    $('#text_1').show();
+                } else if (curTime >= 12 && curTime < 20) {
+                    $('#text_2').show();
                     $('img').show();
-                }
-                if (playTime == 20) {
-                    $('#txt2').hide();
-                    $('img').hide();
-                    $('#txt3').show();
-                }
-                if (playTime == 30) {
-                    $('#txt3').hide();
-                    $('#txt4').show();
+                } else if (curTime >= 20 && curTime < 30) {
+                    $('#text_3').show();
+                } else if (curTime >= 30) {
+                    $('#text_4').show();
                 }
             });
 
             $('video').on('ended', function () {
-                $('div').fadeOut(200);
+                $('section').fadeOut(200);
             });
         });
+        // This approach have a drawback that it will set the display property to none for all 
+        // the elements every time the video time is updated. This will ensure that when user skips the video to any time
+        // or the user want to back to anytime in the video, the correct script will be render correctly. 
     </script>
 </head>
 
 <body>
-    <div>
+    <section>
         <video width="720" controls>
             <source src="images/hermit-crab.mp4" type="video/mp4">
             Your browser does not support the this video file.
@@ -46,33 +55,26 @@
 
         <h1>Hermit Crabs</h1>
 
-        <p class="text" id="txt1"> Hermit crabs are decapod crustaceans of the superfamily Paguroidea. <br><br>
+        <p class="text" id="text_1"> Hermit crabs are decapod crustaceans of the superfamily Paguroidea. <br><br>
             Most of the approximately 1,110 species possess an asymmetric abdomen concealed in a scavenged mollusc
             shell.
         </p>
 
-        <p class="text" id="txt2"> As hermit crabs grow, they require larger shells. Since suitable intact
+        <p class="text" id="text_2"> As hermit crabs grow, they require larger shells. Since suitable intact
             gastropod shells are sometimes a limited resource, vigorous competition often occurs among hermit crabs for
             shells.
         </p>
 
         <img src="images/crab-fight.png" alt="Crab Fight">
 
-        <p class="text" id="txt3"> Hermit crabs with too-small shells cannot grow as fast as those with
+        <p class="text" id="text_3"> Hermit crabs with too-small shells cannot grow as fast as those with
             well-fitting shells, and are more likely to be eaten if they cannot retract completely into the
             shell.Therefore, as the hermit crab grows in size, it must find a larger shell and abandon the previous one.
         </p>
 
-        <!-- 
-        The reason for setting the rel attribute in anchor tag below to noreferrer noopener 
-        is to prevent possible malicious attacks from the pages you link to. More info from:
-        https://owasp.org/www-community/attacks/Reverse_Tabnabbing
-        -->
-        <p class="text" id="txt4"> You can read more about hermit crabs on <a
-                href="https://en.wikipedia.org/wiki/Hermit_crab" target="_blank"
-                rel="noopener noreferrer">Wikipedia</a>.
+        <p class="text" id="text_4"> You can read more about hermit crabs on <a href="https://en.wikipedia.org/wiki/Hermit_crab" target="_blank">Wikipedia</a>.
         </p>
-    </div>
+    </section>
 
 </body>
 
